@@ -24,5 +24,11 @@ pipeline {
       }
     }
 
+    stage('Publish package') {
+      steps {
+        sh 'echo "Publishing"'
+      }
+    }
+
   }
 }
