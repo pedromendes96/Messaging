@@ -2,10 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.6.6'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'jvm-test-suite'
 }
 
 group = 'com.pedro.learn'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
@@ -24,9 +25,32 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+testing {
+    suites {
+        test {
+            useJUnitJupiter()
+        }
+
+        integrationTest(JvmTestSuite) {
+            useJUnitJupiter()
+            dependencies {
+                implementation project
+                implementation 'org.springframework.boot:spring-boot-starter-test'
+            }
+
+            targets {
+                all {
+                    testTask.configure {
+                        shouldRunAfter(test)
+                    }
+                }
+            }
+        }
+    }
+}
+
+tasks.named('check') { 
+    dependsOn(testing.suites.integrationTest)
 }

@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MessagingApplication {
 
     public static void main(String[] args) {
-        System.out.println("HI");
         SpringApplication.run(MessagingApplication.class, args);
     }
 
