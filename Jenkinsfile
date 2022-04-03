@@ -26,7 +26,7 @@ pipeline {
 
     stage('Publish packages') {
       when {
-        branch 'master'
+        branch 'main'
       }
       steps {
         sh 'echo "Publishing"'
@@ -35,7 +35,7 @@ pipeline {
 
     stage('Update infrastructure') {
       when {
-        branch 'master'
+        branch 'main'
       }
       steps {
         sh 'echo "Updating infrastructure"'
@@ -44,7 +44,7 @@ pipeline {
 
     stage('Deploy') {
       when {
-        branch 'master'
+        branch 'main'
       }
       steps {
         sh 'echo "Deploying"'
