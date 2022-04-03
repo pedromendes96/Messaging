@@ -25,8 +25,29 @@ pipeline {
     }
 
     stage('Publish packages') {
+      when {
+        branch 'master'
+      }
       steps {
         sh 'echo "Publishing"'
+      }
+    }
+
+    stage('Update infrastructure') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'echo "Updating infrastructure"'
+      }
+    }
+
+    stage('Deploy') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'echo "Deploying"'
       }
     }
 
