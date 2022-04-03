@@ -24,7 +24,7 @@ pipeline {
       }
     }
 
-    stage('Publish package') {
+    stage('Publish packages') {
       steps {
         sh 'echo "Publishing"'
       }
