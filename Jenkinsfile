@@ -18,5 +18,11 @@ pipeline {
       }
     }
 
+    stage('Integration tests') {
+      steps {
+        sh './gradlew integrationTest'
+      }
+    }
+
   }
 }
